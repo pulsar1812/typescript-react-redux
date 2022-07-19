@@ -1,0 +1,16 @@
+.button {
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #1565e6;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.item {
+  cursor: pointer;
+  margin-bottom: 1rem;
+}

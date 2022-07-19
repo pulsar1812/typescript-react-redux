@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { Todo, fetchTodos, deleteTodo } from '../actions';
 import { StoreState } from '../reducers';
+import styles from './App.module.css';
 
 interface AppProps {
   todos: Todo[];
@@ -38,7 +39,11 @@ class _App extends React.Component<AppProps, AppState> {
   renderList(): JSX.Element[] {
     return this.props.todos.map((todo: Todo) => {
       return (
-        <div onClick={() => this.onTodoClick(todo.id)} key={todo.id}>
+        <div
+          onClick={() => this.onTodoClick(todo.id)}
+          key={todo.id}
+          className={styles.item}
+        >
           {todo.title}
         </div>
       );
@@ -48,7 +53,9 @@ class _App extends React.Component<AppProps, AppState> {
   render() {
     return (
       <div>
-        <button onClick={this.onButtonClick}>Fetch</button>
+        <button onClick={this.onButtonClick} className={styles.button}>
+          Fetch
+        </button>
         {this.state.fetching ? 'Loading' : null}
         {this.renderList()}
       </div>
@@ -57,7 +64,7 @@ class _App extends React.Component<AppProps, AppState> {
 }
 
 const mapStateToProps = (state: StoreState): { todos: Todo[] } => ({
-  todos: state.todos
+  todos: state.todos,
 });
 
 export const App = connect(mapStateToProps, { fetchTodos, deleteTodo })(_App);
